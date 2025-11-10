@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { use } from 'react';
 import { IoHome } from "react-icons/io5";
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Navbar = () => {
+    const { user } = use(AuthContext);
     const lists = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/all-properties">All Properties</NavLink></li>
@@ -19,7 +21,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-9999 mt-3 w-52 p-2 shadow">
                         {
                             lists
                         }
@@ -38,8 +40,23 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
-                <Link to="/auth/sign-in" className='btn btn-outline btn-primary'>Sign In</Link>
-                <Link to="/auth/sign-up" className='btn btn-outline btn-info'>Sign Up</Link>
+                {
+                    user ? <div className='flex items-center gap-2'>
+                        <div className="dropdown dropdown-center">
+                            <img tabIndex={0} role='button' className='w-12 h-12 rounded-full cursor-pointer' src={user.photoURL} alt="" />
+                            <ul tabIndex="-1" className="dropdown-content menu bg-base-200 rounded-box z-9999 w-52 p-2 shadow-md">
+                                <li><p>{user.displayName}</p></li>
+                                <li><p>{user.email}</p></li>
+                                <li><button className='btn btn-outline btn-primary'>Sign Out</button></li>
+                            </ul>
+                        </div>
+
+                        <p>Hi, {user.displayName}</p>
+                    </div> : <>
+                        <Link to="/auth/sign-in" className='btn btn-outline btn-primary'>Sign In</Link>
+                        <Link to="/auth/sign-up" className='btn btn-outline btn-info'>Sign Up</Link>
+                    </>
+                }
             </div>
         </div>
     );
