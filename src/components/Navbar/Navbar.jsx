@@ -4,13 +4,34 @@ import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Navbar = () => {
-    const { user } = use(AuthContext);
+    const { user, signOutUser } = use(AuthContext);
+
+    const handleSignOut = (e) => {
+        e.preventDefault();
+        signOutUser()
+            .then(() => {
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     const lists = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/all-properties">All Properties</NavLink></li>
-        <li><NavLink to="/add-properties">Add Properties</NavLink></li>
-        <li><NavLink to="/my-properties">My Properties</NavLink></li>
-        <li><NavLink to="/my-ratings">My Ratings</NavLink></li>
+        {
+            user ? <>
+                <li><NavLink to="/">Home</NavLink></li>
+                <li><NavLink to="/all-properties">All Properties</NavLink></li>
+                <li><NavLink to="/add-properties">Add Properties</NavLink></li>
+                <li><NavLink to="/my-properties">My Properties</NavLink></li>
+                <li><NavLink to="/my-ratings">My Ratings</NavLink></li>
+            </> :
+                <>
+                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/all-properties">All Properties</NavLink></li>
+                    <li><NavLink to="/add-properties">Add Properties</NavLink></li>
+                </>
+        }
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm md:px-20">
@@ -47,7 +68,7 @@ const Navbar = () => {
                             <ul tabIndex="-1" className="dropdown-content menu bg-base-200 rounded-box z-9999 w-52 p-2 shadow-md">
                                 <li><p>{user.displayName}</p></li>
                                 <li><p>{user.email}</p></li>
-                                <li><button className='btn btn-outline btn-primary'>Sign Out</button></li>
+                                <li><button onClick={handleSignOut} className='btn btn-outline btn-primary'>Sign Out</button></li>
                             </ul>
                         </div>
 

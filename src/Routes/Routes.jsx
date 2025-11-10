@@ -14,6 +14,18 @@ const router = createBrowserRouter([
             index: true,
             path: "/",
             Component: Home
+        },
+        {
+          path: "/all-properties",
+        },
+        {
+          path: "/add-properties",
+        },
+        {
+          path: "/my-properties",
+        },
+        {
+          path: "/my-ratings",
         }
     ]
   },
