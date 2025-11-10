@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { IoHome } from "react-icons/io5";
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
     const { user, signOutUser } = use(AuthContext);
@@ -10,10 +11,17 @@ const Navbar = () => {
         e.preventDefault();
         signOutUser()
             .then(() => {
-
+                Swal.fire({
+                    title: "Signed Out successfully",
+                    icon: "success",
+                });
             })
             .catch(error => {
-                console.log(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${error.message}`,
+                });
             })
     }
 
@@ -72,7 +80,7 @@ const Navbar = () => {
                             </ul>
                         </div>
 
-                        <p>Hi, {user.displayName}</p>
+                        <p className=''>Hi, {user.displayName}</p>
                     </div> : <>
                         <Link to="/auth/sign-in" className='btn btn-outline btn-primary'>Sign In</Link>
                         <Link to="/auth/sign-up" className='btn btn-outline btn-info'>Sign Up</Link>

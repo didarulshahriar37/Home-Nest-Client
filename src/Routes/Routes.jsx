@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import AuthLayout from "../layouts/AuthLayout";
 import SignIn from "../pages/SignIn";
 import Signup from "../pages/Signup";
+import Error from "../pages/Error";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             Component: Signup
         }
     ]
+  },
+  {
+    path: "/*",
+    Component: Error
   }
 ]);
 

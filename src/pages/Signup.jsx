@@ -1,12 +1,17 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import Swal from 'sweetalert2';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Signup = () => {
 
     const { signUpWithEmail, updateInfo, setUser, googleSignIn } = use(AuthContext);
     const navigate = useNavigate();
+    const [error, setError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSignUpEmail = (e) => {
         e.preventDefault();
@@ -14,6 +19,42 @@ const Signup = () => {
         const email = e.target.email.value;
         const photo = e.target.photoURL.value;
         const password = e.target.password.value;
+
+        const upperCasePattern = /^(?=.*[A-Z])/;
+        const lowerCasePattern = /^(?=.*[a-z])/;
+        const lengthPattern = /^.{6,}$/;
+
+        if (!lengthPattern.test(password)) {
+            setError("Password must be atleast 6 characters long!");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must be atleast 6 characters long!",
+            });
+            return;
+        }
+        else if (!upperCasePattern.test(password)) {
+            setError("Password must have one upper case letter.");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must have one upper case letter.",
+            });
+            return;
+        }
+        else if (!lowerCasePattern.test(password)) {
+            setError("Password must have one lower case letter.");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must have one lower case letter.",
+            });
+            return;
+        }
+        else {
+            setError("");
+        }
+
         signUpWithEmail(email, password)
             .then(result => {
                 const user = result.user;
@@ -38,15 +79,26 @@ const Signup = () => {
                             .then(data => {
                                 console.log(data)
                             })
-
+                        Swal.fire({
+                            title: "Account created succesfully!",
+                            icon: "success",
+                        });
                         navigate("/");
                     })
                     .catch((error) => {
-                        console.log(error);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: `${error.message}`,
+                        });
                     })
             })
             .catch(error => {
-                console.log(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${error.message}`,
+                });
             })
     }
 
@@ -57,15 +109,46 @@ const Signup = () => {
                 const token = credential.accessToken;
                 const user = result.user;
                 setUser(user);
+
+                const newUser = {
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL
+                }
+                fetch("http://localhost:3000/users", {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
+                Swal.fire({
+                    title: "Account Created Succesfully!",
+                    icon: "success",
+                });
                 navigate("/");
             })
             .catch(error => {
-                console.log(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${error.message}`,
+                });
             })
+    }
+
+    const handleTogglePassword = (event) => {
+        event.preventDefault();
+        setShowPassword(!showPassword);
     }
 
     return (
         <div className=''>
+            <title>Create a new account</title>
             <div className='mt-10 text-center text-2xl md:text-4xl font-bold'>
                 <h2>CREATE A NEW ACCOUNT !</h2>
             </div>
@@ -79,7 +162,14 @@ const Signup = () => {
                         <label className="label">Photo URL</label>
                         <input name='photoURL' type="text" className="input" placeholder="Your Photo URL" required />
                         <label className="label">Password</label>
-                        <input name='password' type="password" className="input" placeholder="Password" required />
+                        <div className='relative'>
+                            <input name='password' type={showPassword ? "text" : "password"} className="input" placeholder="Password" required />
+                            <div onClick={handleTogglePassword} className='hover:cursor-pointer text-xl top-2.5 right-6 absolute z-9999'>
+                                {
+                                    showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
+                                }
+                            </div>
+                        </div>
                         <button type='submit' className="btn hover:bg-sky-600 bg-sky-400 mt-4">Sign Up</button>
                         <p className='text-center font-bold text-xl'>Or</p>
                         <button onClick={handleGoogleSignIn} className="btn bg-base-300 text-black border-[#e5e5e5]">

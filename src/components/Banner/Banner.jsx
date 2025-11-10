@@ -14,7 +14,7 @@ import city from "../../assets/city.jpg";
 
 const Banner = () => {
     return (
-        <div className='mt-3 px-5 md:px-20 shadow-md'>
+        <div className='mt-3 px-5 md:px-20'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -38,7 +38,7 @@ const Banner = () => {
                             <div className='space-y-4 md:ml-15 mt-3 md:mt-40 relative z-10 text-center md:text-start max-w-lg'>
                                 <h3 className='flex justify-center md:justify-normal items-center font-bold gap-2 text-xl md:text-4xl'><MdApartment></MdApartment> Find Your Dream House</h3>
                                 <p className='text-sm md:text-lg'>Discover modern apartments, cozy family homes, and premium properties - all in one trusted platform.</p>
-                                <Link to="/all-properties" className='btn border-none shadow-none hover:bg-sky-600 bg-sky-400'>All Properties</Link>
+                                <Link to="/all-properties" className='btn border-none shadow-none bg-linear-to-r from-[#56CCF2] to-[#2F80ED] hover:from-[#00B4DB] hover:to-[#0083B0]'>All Properties</Link>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ const Banner = () => {
                             <div className='space-y-4 px-2 md:ml-15 mt-3 md:mt-40 relative z-10 text-center md:text-start max-w-lg'>
                                 <h3 className='flex justify-center md:justify-normal items-center font-bold gap-2 text-xl md:text-4xl'>Explore Homes Near You — Anytime, Anywhere</h3>
                                 <p className='text-sm md:text-lg'>Browse properties by location, budget, or type — our powerful filters make home-hunting effortless.</p>
-                                <Link to="/all-properties" className='btn border-none shadow-none hover:bg-sky-600 bg-sky-400'>All Properties</Link>
+                                <Link to="/all-properties" className='btn border-none shadow-none bg-linear-to-r from-[#56CCF2] to-[#2F80ED] hover:from-[#00B4DB] hover:to-[#0083B0]'>All Properties</Link>
                             </div>
                         </div>
                     </div>

@@ -1,11 +1,15 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import Swal from 'sweetalert2';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const SignIn = () => {
     const { signInWithEmail, setUser, googleSignIn } = use(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+
     const handleSignIn = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -14,10 +18,18 @@ const SignIn = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
+                Swal.fire({
+                    title: "Signed In",
+                    icon: "success",
+                });
                 navigate("/");
             })
             .catch(error => {
-                console.log(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${error.message}`,
+                });
             })
     }
 
@@ -28,15 +40,29 @@ const SignIn = () => {
                 const token = credential.accessToken;
                 const user = result.user;
                 setUser(user);
+                Swal.fire({
+                    title: "Signed In",
+                    icon: "success",
+                });
                 navigate("/");
             })
             .catch(error => {
-                console.log(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${error.message}`,
+                });
             })
+    }
+
+    const handleTogglePassword = (event) => {
+        event.preventDefault();
+        setShowPassword(!showPassword);
     }
 
     return (
         <div className=''>
+            <title>Sign in to your account</title>
             <div className='mt-10 text-center text-2xl md:text-4xl font-bold'>
                 <h2>SIGN IN TO YOUR ACCOUNT</h2>
             </div>
@@ -46,7 +72,14 @@ const SignIn = () => {
                         <label className="label">Email</label>
                         <input name='email' type="text" className="input" placeholder="Your Email" required />
                         <label className="label">Password</label>
-                        <input name='password' type="password" className="input" placeholder="Password" required />
+                        <div className='relative'>
+                            <input name='password' type={showPassword ? "text" : "password"} className="input" placeholder="Password" required />
+                            <div onClick={handleTogglePassword} className='hover:cursor-pointer text-xl top-2.5 right-6 absolute z-9999'>
+                                {
+                                    showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
+                                }
+                            </div>
+                        </div>
                         <p className='text-red-500 underline hover:cursor-pointer'>Forgot Password?</p>
                         <button type='submit' className="btn hover:bg-sky-600 bg-sky-400 mt-4">Sign In</button>
                         <p className='text-center font-bold text-xl'>Or</p>
