@@ -1,5 +1,5 @@
 import React, { use, useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import Swal from 'sweetalert2';
@@ -8,6 +8,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const SignIn = () => {
     const { signInWithEmail, setUser, googleSignIn } = use(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const location = useLocation();
     const navigate = useNavigate();
 
     const handleSignIn = (e) => {
@@ -22,7 +23,7 @@ const SignIn = () => {
                     title: "Signed In",
                     icon: "success",
                 });
-                navigate("/");
+                navigate(`${location.state ? location.state : "/"}`);
             })
             .catch(error => {
                 Swal.fire({
@@ -44,7 +45,7 @@ const SignIn = () => {
                     title: "Signed In",
                     icon: "success",
                 });
-                navigate("/");
+                navigate(`${location.state ? location.state : "/"}`);
             })
             .catch(error => {
                 Swal.fire({
@@ -74,7 +75,7 @@ const SignIn = () => {
                         <label className="label">Password</label>
                         <div className='relative'>
                             <input name='password' type={showPassword ? "text" : "password"} className="input" placeholder="Password" required />
-                            <div onClick={handleTogglePassword} className='hover:cursor-pointer text-xl top-2.5 right-6 absolute z-9999'>
+                            <div onClick={handleTogglePassword} className='hover:cursor-pointer text-xl top-2.5 right-6 absolute z-50'>
                                 {
                                     showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
                                 }

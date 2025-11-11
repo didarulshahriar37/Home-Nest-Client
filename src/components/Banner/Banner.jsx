@@ -14,7 +14,7 @@ import city from "../../assets/city.jpg";
 
 const Banner = () => {
     return (
-        <div className='mt-3 px-5 md:px-20'>
+        <div className='pt-20 px-5 md:px-20'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

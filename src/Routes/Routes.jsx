@@ -6,6 +6,12 @@ import SignIn from "../pages/SignIn";
 import Signup from "../pages/Signup";
 import Error from "../pages/Error";
 import Loading from "../components/Loading/Loading";
+import AllProperties from "../pages/AllProperties";
+import AddProperties from "../pages/AddProperties";
+import MyProperties from "../pages/MyProperties";
+import MyRatings from "../pages/MyRatings";
+import PrivateRoute from "../provider/PrivateRoute";
+import PropertyDetails from "../pages/PropertyDetails";
 
 const router = createBrowserRouter([
   {
@@ -21,15 +27,25 @@ const router = createBrowserRouter([
         },
         {
           path: "/all-properties",
+          Component: AllProperties,
+          loader: () => fetch("http://localhost:3000/all-properties"),
+          hydrateFallbackElement: <Loading></Loading>
         },
         {
           path: "/add-properties",
+          element: <PrivateRoute><AddProperties></AddProperties></PrivateRoute>
         },
         {
           path: "/my-properties",
+          element: <PrivateRoute><MyProperties></MyProperties></PrivateRoute>
         },
         {
           path: "/my-ratings",
+          element: <PrivateRoute><MyRatings></MyRatings></PrivateRoute>
+        },
+        {
+          path: "/property-details/:id",
+          element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>
         }
     ]
   },
