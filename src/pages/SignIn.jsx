@@ -71,15 +71,10 @@ const SignIn = () => {
                 <div className="card-body">
                     <form onSubmit={handleSignIn} className="fieldset">
                         <label className="label">Email</label>
-                        <input name='email' type="text" className="input" placeholder="Your Email" required />
+                        <input name='email' type="text" className="input w-full" placeholder="Your Email" required />
                         <label className="label">Password</label>
                         <div className='relative'>
-                            <input name='password' type={showPassword ? "text" : "password"} className="input" placeholder="Password" required />
-                            <div onClick={handleTogglePassword} className='hover:cursor-pointer text-xl top-2.5 right-6 absolute z-50'>
-                                {
-                                    showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
-                                }
-                            </div>
+                            <input name='password' type={showPassword ? "text" : "password"} className="input w-full" placeholder="Password" required />
                         </div>
                         <p className='text-red-500 underline hover:cursor-pointer'>Forgot Password?</p>
                         <button type='submit' className="btn hover:bg-sky-600 bg-sky-400 mt-4">Sign In</button>

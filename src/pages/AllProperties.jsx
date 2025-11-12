@@ -27,7 +27,7 @@ const AllProperties = () => {
     return (
         <div className='pt-10 md:pt-20 px-5 md:px-20 mt-10'>
             <title>HomeNest - All Properties</title>
-            <h3 className='text-center text-2xl md:text-4xl font-bold mb-10'>Featured <span className='text-transparent bg-clip-text bg-linear-to-r from-[#2B32B2] to-[#1488CC]'>Properties</span></h3>
+            <h3 className='text-center text-2xl md:text-4xl font-bold mb-10'>All <span className='text-transparent bg-clip-text bg-linear-to-r from-[#2B32B2] to-[#1488CC]'>Properties</span></h3>
             <div className='flex items-center justify-between flex-col md:flex-row'>
                 <div>
                     <p className='font-bold'>{searchData.length} properties found</p>
@@ -52,7 +52,7 @@ const AllProperties = () => {
                     </div>
                     <div>
                         <div className="dropdown dropdown-end">
-                            <div tabIndex={0} role="button" className="btn m-1">Sort By</div>
+                            <div tabIndex={0} role="button" className="btn m-1 bg-sky-400">Sort By</div>
                             <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                                 <li onClick={() => handleSort("price")} className='btn btn-ghost'>Price</li>
                                 <li onClick={() => handleSort("postedDate")} className='btn btn-ghost'>Posted Date</li>

@@ -157,14 +157,14 @@ const Signup = () => {
                 <div className="card-body">
                     <form onSubmit={handleSignUpEmail} className="fieldset">
                         <label className="label">Name</label>
-                        <input name='name' type="text" className="input" placeholder="Your Name" required />
+                        <input name='name' type="text" className="input w-full" placeholder="Your Name" required />
                         <label className="label">Email</label>
-                        <input name='email' type="text" className="input" placeholder="Your Email" required />
+                        <input name='email' type="email" className="input w-full" placeholder="Your Email" required />
                         <label className="label">Photo URL</label>
-                        <input name='photoURL' type="text" className="input" placeholder="Your Photo URL" required />
+                        <input name='photoURL' type="text" className="input w-full" placeholder="Your Photo URL" required />
                         <label className="label">Password</label>
                         <div className='relative'>
-                            <input name='password' type={showPassword ? "text" : "password"} className="input" placeholder="Password" required />
+                            <input name='password' type={showPassword ? "text" : "password"} className="input w-full" placeholder="Password" required />
                             <div onClick={handleTogglePassword} className='hover:cursor-pointer text-xl top-2.5 right-6 absolute z-50'>
                                 {
                                     showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
