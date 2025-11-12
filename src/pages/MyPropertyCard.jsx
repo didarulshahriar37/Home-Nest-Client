@@ -5,11 +5,13 @@ import { SlCalender } from "react-icons/sl";
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
-const MyPropertyCard = ({ property }) => {
+const MyPropertyCard = ({ property, myProperties, setMyProperties }) => {
     const { user } = use(AuthContext);
     const navigate = useNavigate();
 
     const handleUpdateInfo = (e, id) => {
+        e.preventDefault();
+
         const propertyName = e.target.propertyName.value;
         const description = e.target.description.value;
         const price = e.target.price.value;
@@ -47,8 +49,51 @@ const MyPropertyCard = ({ property }) => {
                         title: "Data Updated Successfully",
                         icon: "success",
                     });
-                    navigate(`/property-details/${id}`);
                 }
+                setMyProperties(data);
+                navigate(`/property-details/${id}`);
+            })
+    }
+
+    const handleDelete = (e, id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+
+
+                    fetch(`http://localhost:3000/all-properties/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+
+                                const remainingProperties = myProperties.filter(myProperty => myProperty._id.toString() !== id.toString());
+                                setMyProperties(remainingProperties);
+
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your file has been deleted.",
+                                    icon: "success"
+                                });
+                            }
+                        })
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${error.message}`,
+                });
             })
     }
 
@@ -101,7 +146,7 @@ const MyPropertyCard = ({ property }) => {
                             </div>
                         </dialog>
                         <Link className='btn btn-primary btn-outline' to={`/property-details/${property._id}`}>View Details</Link>
-                        <button className='btn btn-error btn-outline'>Delete</button>
+                        <button onClick={(e) => handleDelete(e, property._id)} className='btn btn-error btn-outline'>Delete</button>
                     </div>
                 </div>
             </div>
