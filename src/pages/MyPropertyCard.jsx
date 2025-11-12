@@ -1,9 +1,57 @@
-import React from 'react';
+import React, { use } from 'react';
 import { MdOutlineLocationOn } from 'react-icons/md';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { SlCalender } from "react-icons/sl";
+import { AuthContext } from '../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const MyPropertyCard = ({ property }) => {
+    const { user } = use(AuthContext);
+    const navigate = useNavigate();
+
+    const handleUpdateInfo = (e, id) => {
+        const propertyName = e.target.propertyName.value;
+        const description = e.target.description.value;
+        const price = e.target.price.value;
+        const location = e.target.location.value;
+        const category = e.target.category.value;
+        const propertyImage = e.target.propertyImage.value;
+        const email = e.target.userEmail.value;
+        const name = e.target.userName.value;
+
+        const updatedInfo = {
+            propertyName: propertyName,
+            description: description,
+            price: price,
+            location: location,
+            category: category,
+            propertyImage: propertyImage,
+            postedBy: {
+                email: email,
+                name: name,
+                profilePhoto: user.photoURL
+            }
+        }
+
+        fetch(`http://localhost:3000/all-properties/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Data Updated Successfully",
+                        icon: "success",
+                    });
+                    navigate(`/property-details/${id}`);
+                }
+            })
+    }
+
     return (
         <div>
             <div className="card rounded-2xl bg-base-100 shadow-xl transition-transform transform hover:scale-105 hover:shadow-2xl duration-300">
@@ -24,9 +72,36 @@ const MyPropertyCard = ({ property }) => {
                         <div className="badge badge-outline font-bold">Price: {property.price}</div>
                     </div>
                     <div className='mt-5 flex justify-between'>
-                        <Link className='btn btn-success btn-outline'>Update</Link>
+                        <button className="btn btn-success btn-outline" onClick={() => document.getElementById(property._id).showModal()}>Update</button>
+                        <dialog id={property._id} className="modal modal-bottom sm:modal-middle">
+                            <div className="modal-box">
+                                <p className='text-center mb-5 font-bold text-xl'>Update Property Details</p>
+                                <form onSubmit={(e) => handleUpdateInfo(e, property._id)} className="fieldset">
+                                    <label className="label">Property Name</label>
+                                    <input name='propertyName' type="text" className="input w-full" placeholder="Property Name" defaultValue={property.propertyName} required />
+                                    <label className="label">Description</label>
+                                    <input name='description' type="text" className="input w-full" placeholder="Property Description" defaultValue={property.description} required />
+                                    <label className="label">Price</label>
+                                    <input name='price' type="text" className="input w-full" placeholder="Property Price" defaultValue={property.price} required />
+                                    <label className="label">Location</label>
+                                    <input name='location' type="text" className="input w-full" placeholder="Property Location" defaultValue={property.location} required />
+                                    <label className="label">Category</label>
+                                    <input type="text" name='category' className='input w-full' placeholder='Property Category' defaultValue={property.category} required />
+                                    <label className="label">Property Image URL</label>
+                                    <input name='propertyImage' type="text" className="input w-full" placeholder="Property photoURL" defaultValue={property.propertyImage} required />
+                                    <label className="label">Your Email</label>
+                                    <input name='userEmail' type="email" className="input w-full" defaultValue={user.email} readOnly required />
+                                    <label className="label">Your Name</label>
+                                    <input name='userName' type="text" className="input w-full" defaultValue={user.displayName} readOnly required />
+                                    <div className='flex justify-between mx-30 mt-4'>
+                                        <button type='submit' className="btn btn-outline btn-success">Update</button>
+                                        <button className="btn btn-outline btn-error" type='button' onClick={() => document.getElementById(property._id).close()}>Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </dialog>
                         <Link className='btn btn-primary btn-outline' to={`/property-details/${property._id}`}>View Details</Link>
-                        <Link className='btn btn-error btn-outline'>Delete</Link>
+                        <button className='btn btn-error btn-outline'>Delete</button>
                     </div>
                 </div>
             </div>
