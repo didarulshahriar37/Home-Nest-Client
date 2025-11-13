@@ -37,7 +37,7 @@ const MyPropertyCard = ({ property, setProperties }) => {
             }
         }
 
-        fetch(`http://localhost:3000/all-properties/${id}`, {
+        fetch(`https://home-nest-server-green.vercel.app/all-properties/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -71,7 +71,7 @@ const MyPropertyCard = ({ property, setProperties }) => {
                 if (result.isConfirmed) {
 
 
-                    fetch(`http://localhost:3000/all-properties/${id}`, {
+                    fetch(`https://home-nest-server-green.vercel.app/all-properties/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

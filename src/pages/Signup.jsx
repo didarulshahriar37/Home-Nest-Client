@@ -69,7 +69,7 @@ const Signup = () => {
                             photo: user.photoURL
                         }
 
-                        fetch("http://localhost:3000/users", {
+                        fetch("https://home-nest-server-green.vercel.app/users", {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -116,7 +116,7 @@ const Signup = () => {
                     email: user.email,
                     photo: user.photoURL
                 }
-                fetch("http://localhost:3000/users", {
+                fetch("https://home-nest-server-green.vercel.app/users", {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

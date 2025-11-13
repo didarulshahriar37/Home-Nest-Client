@@ -7,7 +7,7 @@ import Agents from '../components/Agents/Agents';
 import { useLoaderData } from 'react-router';
 import Property from '../components/Property/Property';
 
-const agentsPromise = fetch("http://localhost:3000/agents").then(res => res.json());
+const agentsPromise = fetch("https://home-nest-server-green.vercel.app/agents").then(res => res.json());
 
 const Home = () => {
     const properties = useLoaderData();

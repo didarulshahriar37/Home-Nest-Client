@@ -22,18 +22,18 @@ const router = createBrowserRouter([
             index: true,
             path: "/",
             Component: Home,
-            loader: () => fetch("http://localhost:3000/featured-properties"),
+            loader: () => fetch("https://home-nest-server-green.vercel.app/featured-properties"),
             hydrateFallbackElement: <Loading></Loading>
         },
         {
           path: "/all-properties",
           Component: AllProperties,
-          loader: () => fetch("http://localhost:3000/all-properties"),
+          loader: () => fetch("https://home-nest-server-green.vercel.app/all-properties"),
           hydrateFallbackElement: <Loading></Loading>
         },
         {
           path: "/add-properties",
-          loader: () => fetch("http://localhost:3000/all-properties"),
+          loader: () => fetch("https://home-nest-server-green.vercel.app/all-properties"),
           hydrateFallbackElement: <Loading></Loading>,
           element: <PrivateRoute><AddProperties></AddProperties></PrivateRoute>
         },
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/property-details/:id",
-          loader: () => fetch("http://localhost:3000/all-properties"),
+          loader: () => fetch("https://home-nest-server-green.vercel.app/all-properties"),
           hydrateFallbackElement: <Loading></Loading>,
           element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>
         }

@@ -34,7 +34,7 @@ const PropertyDetails = () => {
             photo: user.photoURL
         }
 
-        fetch("http://localhost:3000/reviews", {
+        fetch("https://home-nest-server-green.vercel.app/reviews", {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

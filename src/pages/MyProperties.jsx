@@ -9,7 +9,7 @@ const MyProperties = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/all-properties?email=${user?.email}`)
+        fetch(`https://home-nest-server-green.vercel.app/all-properties?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setProperties(data);

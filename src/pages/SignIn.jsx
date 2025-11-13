@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import Swal from 'sweetalert2';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const SignIn = () => {
     const { signInWithEmail, setUser, googleSignIn } = use(AuthContext);
