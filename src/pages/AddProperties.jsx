@@ -13,6 +13,7 @@ const AddProperties = () => {
         event.preventDefault();
         const propertyName = event.target.propertyName.value;
         const description = event.target.description.value;
+        const longDescription = event.target.details.value;
         const price = event.target.price.value;
         const location = event.target.location.value;
         const category = event.target.category.value;
@@ -24,6 +25,7 @@ const AddProperties = () => {
         const newProperty = {
             propertyName: propertyName,
             description: description,
+            longDescription: longDescription,
             price: price,
             location: location,
             category: category,
@@ -70,8 +72,10 @@ const AddProperties = () => {
                     <form onSubmit={handleAddProperty} className="fieldset">
                         <label className="label">Property Name</label>
                         <input name='propertyName' type="text" className="input w-full" placeholder="Property Name" required />
-                        <label className="label">Description</label>
-                        <input name='description' type="text" className="input w-full" placeholder="Property Description" required />
+                        <label className="label">Short Description</label>
+                        <input name='description' type="text" className="input w-full" placeholder="Short Description" required />
+                        <label className="label">Details</label>
+                        <input name='details' type="text" className="input w-full" placeholder="Details" required />
                         <label className="label">Price</label>
                         <input name='price' type="text" className="input w-full" placeholder="Property Price" required />
                         <label className="label">Location</label>

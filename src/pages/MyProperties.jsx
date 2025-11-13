@@ -7,7 +7,6 @@ const MyProperties = () => {
     const {user} = use(AuthContext);
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [myProperties, setMyProperties] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:3000/all-properties?email=${user?.email}`)
@@ -30,7 +29,7 @@ const MyProperties = () => {
                 {
                     properties.length>0 ? <div className='grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 gap-5 md:gap-10 mb-15'>
                         {
-                            properties.map(property => <MyPropertyCard key={property._id} property={property} myProperties={myProperties} setMyProperties={setMyProperties}></MyPropertyCard>)
+                            properties.map(property => <MyPropertyCard key={property._id} property={property} properties={properties} setProperties={setProperties}></MyPropertyCard>)
                         }
                     </div> : <h3 className='text-4xl font-bold text-center p-20'>Seems like you didn't add any properties yet!</h3>
                 }

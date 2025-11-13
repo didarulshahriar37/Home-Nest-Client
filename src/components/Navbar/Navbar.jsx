@@ -72,7 +72,7 @@ const Navbar = () => {
                 {
                     user ? <div className='flex items-center gap-2'>
                         <div className="dropdown dropdown-center">
-                            <img tabIndex={0} role='button' className='w-12 h-12 rounded-full cursor-pointer' src={user.photoURL} alt="" />
+                            <img tabIndex={0} role='button' className='w-12 h-12 rounded-full object-cover cursor-pointer' src={user.photoURL} alt="" />
                             <ul tabIndex="-1" className="dropdown-content menu bg-base-200 rounded-box z-9999 w-52 p-2 shadow-md">
                                 <li><p>{user.displayName}</p></li>
                                 <li><p>{user.email}</p></li>

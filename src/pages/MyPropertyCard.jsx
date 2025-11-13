@@ -5,7 +5,7 @@ import { SlCalender } from "react-icons/sl";
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
-const MyPropertyCard = ({ property, myProperties, setMyProperties }) => {
+const MyPropertyCard = ({ property, properties, setProperties }) => {
     const { user } = use(AuthContext);
     const navigate = useNavigate();
 
@@ -14,6 +14,7 @@ const MyPropertyCard = ({ property, myProperties, setMyProperties }) => {
 
         const propertyName = e.target.propertyName.value;
         const description = e.target.description.value;
+        const longDescription = e.target.details.value;
         const price = e.target.price.value;
         const location = e.target.location.value;
         const category = e.target.category.value;
@@ -24,6 +25,7 @@ const MyPropertyCard = ({ property, myProperties, setMyProperties }) => {
         const updatedInfo = {
             propertyName: propertyName,
             description: description,
+            longDescription: longDescription,
             price: price,
             location: location,
             category: category,
@@ -50,7 +52,7 @@ const MyPropertyCard = ({ property, myProperties, setMyProperties }) => {
                         icon: "success",
                     });
                 }
-                setMyProperties(data);
+                setProperties(prev => prev.map(property => property._id === id ? { ...property, ...updatedInfo } : property));
                 navigate(`/property-details/${id}`);
             })
     }
@@ -76,12 +78,18 @@ const MyPropertyCard = ({ property, myProperties, setMyProperties }) => {
                         .then(data => {
                             if (data.deletedCount > 0) {
 
-                                const remainingProperties = myProperties.filter(myProperty => myProperty._id.toString() !== id.toString());
-                                setMyProperties(remainingProperties);
+                                setProperties((prev) => {
+                                    const updated = prev.filter(p => p._id.toString() !== id.toString());
+                                    return [...updated];
+                                });
+
+                                console.log('Deleting id:', id);
+                                console.log('All properties:', properties);
+
 
                                 Swal.fire({
                                     title: "Deleted!",
-                                    text: "Your file has been deleted.",
+                                    text: "Your property has been deleted.",
                                     icon: "success"
                                 });
                             }
@@ -124,8 +132,10 @@ const MyPropertyCard = ({ property, myProperties, setMyProperties }) => {
                                 <form onSubmit={(e) => handleUpdateInfo(e, property._id)} className="fieldset">
                                     <label className="label">Property Name</label>
                                     <input name='propertyName' type="text" className="input w-full" placeholder="Property Name" defaultValue={property.propertyName} required />
-                                    <label className="label">Description</label>
-                                    <input name='description' type="text" className="input w-full" placeholder="Property Description" defaultValue={property.description} required />
+                                    <label className="label">Short Description</label>
+                                    <input name='description' type="text" className="input w-full" placeholder="Short Description" defaultValue={property.description} required />
+                                    <label className="label">Details</label>
+                                    <input name='details' type="text" className="input w-full" placeholder="Details" defaultValue={property.longDescription} required />
                                     <label className="label">Price</label>
                                     <input name='price' type="text" className="input w-full" placeholder="Property Price" defaultValue={property.price} required />
                                     <label className="label">Location</label>

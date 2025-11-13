@@ -47,6 +47,8 @@ const router = createBrowserRouter([
         },
         {
           path: "/property-details/:id",
+          loader: () => fetch("http://localhost:3000/all-properties"),
+          hydrateFallbackElement: <Loading></Loading>,
           element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>
         }
     ]
