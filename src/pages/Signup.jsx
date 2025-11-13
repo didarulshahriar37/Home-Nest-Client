@@ -78,7 +78,7 @@ const Signup = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                console.log(data)
+                                
                             })
                         Swal.fire({
                             title: "Account created succesfully!",
@@ -125,7 +125,7 @@ const Signup = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                       
                     })
                 Swal.fire({
                     title: "Account Created Succesfully!",

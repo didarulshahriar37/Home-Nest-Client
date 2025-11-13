@@ -83,10 +83,6 @@ const MyPropertyCard = ({ property, properties, setProperties }) => {
                                     return [...updated];
                                 });
 
-                                console.log('Deleting id:', id);
-                                console.log('All properties:', properties);
-
-
                                 Swal.fire({
                                     title: "Deleted!",
                                     text: "Your property has been deleted.",

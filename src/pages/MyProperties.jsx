@@ -13,7 +13,6 @@ const MyProperties = () => {
             .then(res => res.json())
             .then(data => {
                 setProperties(data);
-                console.log(data);
                 setLoading(false);
             })
     }, [user])
