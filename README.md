@@ -1,7 +1,7 @@
 # WEBSITE NAME 
 HomeNest - A Real Estate Listing Portal
 # LIVE SITE LINK
-[HomeNest](https://home-nest-c19f0.web.app/)
+[HomeNest](https://home-nest-d37.netlify.app/)
 # FEATURES
 * Users can add properties to sell.
 * Users can browse all listed properties with filters and sorting options.
