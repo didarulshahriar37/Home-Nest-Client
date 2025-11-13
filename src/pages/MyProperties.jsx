@@ -9,6 +9,8 @@ const MyProperties = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (!user?.email) return;
+        setLoading(true);
         fetch(`https://home-nest-server-green.vercel.app/all-properties?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
@@ -19,7 +21,7 @@ const MyProperties = () => {
                 }
                 setLoading(false);
             })
-    }, [user])
+    }, [user?.email])
 
     if (loading) {
         return <Loading></Loading>
