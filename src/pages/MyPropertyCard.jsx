@@ -5,7 +5,7 @@ import { SlCalender } from "react-icons/sl";
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
-const MyPropertyCard = ({ property, properties, setProperties }) => {
+const MyPropertyCard = ({ property, setProperties }) => {
     const { user } = use(AuthContext);
     const navigate = useNavigate();
 

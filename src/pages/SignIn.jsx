@@ -56,11 +56,6 @@ const SignIn = () => {
             })
     }
 
-    const handleTogglePassword = (event) => {
-        event.preventDefault();
-        setShowPassword(!showPassword);
-    }
-
     return (
         <div className=''>
             <title>Sign in to your account</title>
