@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 const Error = () => {
     return (
         <div className='flex flex-col items-center mt-50 md:mt-0 p-10 md:p-25 space-y-5'>
+            <title>Page Not Found</title>
             <div>
                 <p className='text-6xl font-bold'>Oops!</p>
             </div>

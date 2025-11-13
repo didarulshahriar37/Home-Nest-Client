@@ -66,6 +66,7 @@ const AddProperties = () => {
 
     return (
         <div className='pt-10 md:pt-20 px-5 md:px-20 mt-10'>
+            <title>HomeNest - Add your property</title>
             <h2 className='text-center font-bold md:text-4xl text-2xl'>ADD YOUR PROPERTY</h2>
             <div className="mt-10 mb-15 mx-auto card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <div className="card-body">

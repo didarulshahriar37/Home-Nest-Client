@@ -24,15 +24,15 @@ const Home = () => {
                         <p className='px-5 mt-5 mb-10 text-xl'>We make property finding <span className='text-blue-600'>simple</span>, <span className='text-blue-600'>secure</span> & <span className='text-blue-600'>smart</span></p>
                     </div>
                     <div className='px-10 md:px-30 flex flex-col md:flex-row gap-5 md:gap-0 justify-between text-center'>
-                        <div className='bg-base-300 shadow-md md:shadow-xl rounded-xl p-5 md:p-10 border-1 border-blue-700 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300'>
+                        <div className='bg-base-300 shadow-md md:shadow-xl rounded-xl p-5 md:p-10 border border-blue-700 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300'>
                             <h4 className='flex items-center gap-2 text-2xl font-bold ml-4 md:ml-0'><FaClipboardList /> Trusted Listings</h4>
                             <p className='mt-5'>All our properties are <br /> verified & safe.</p>
                         </div>
-                        <div className='bg-base-300 shadow-md md:shadow-xl rounded-xl p-5 md:p-10 border-1 border-blue-700 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300'>
+                        <div className='bg-base-300 shadow-md md:shadow-xl rounded-xl p-5 md:p-10 border border-blue-700 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300'>
                             <h4 className='flex items-center gap-2 text-2xl font-bold ml-4 md:ml-0'><AiFillClockCircle /> Quick Processing</h4>
                             <p className='mt-5'>Buy, rent, or sell <br /> in just a few clicks.</p>
                         </div>
-                        <div className='bg-base-300 shadow-md md:shadow-xl rounded-xl p-5 md:p-10 border-1 border-blue-700 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300'>
+                        <div className='bg-base-300 shadow-md md:shadow-xl rounded-xl p-5 md:p-10 border border-blue-700 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300'>
                             <h4 className='flex items-center gap-2 text-2xl font-bold ml-7 md:ml-0'><FaUserTie /> Expert Agents</h4>
                             <p className='mt-5'>Our experienced agents <br /> guide you.</p>
                         </div>

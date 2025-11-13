@@ -14,20 +14,20 @@ const PropertyDetails = () => {
     const [rating, setRating] = useState(0);
     const [review, setReview] = useState("");
     const { id } = useParams();
-    const SingleProperty = data.find(property => property._id === id)
+    const singleProperty = data.find(property => property._id === id)
 
     const handlePostReview = (e) => {
         e.preventDefault();
 
         const reviewData = {
-            propertyName: SingleProperty.propertyName,
-            propertyImage: SingleProperty.propertyImage,
+            propertyName: singleProperty.propertyName,
+            propertyImage: singleProperty.propertyImage,
             postedDate: new Date().toISOString(),
             review: review,
             rating: rating,
             postedBy: {
-                name: SingleProperty.postedBy.name,
-                email: SingleProperty.postedBy.email
+                name: singleProperty.postedBy.name,
+                email: singleProperty.postedBy.email
             },
             name: user.displayName,
             email: user.email,
@@ -62,28 +62,29 @@ const PropertyDetails = () => {
 
     return (
         <div className='pt-10 md:pt-20 px-5 md:px-20 mt-10 mb-15'>
+            <title>{singleProperty.propertyName}</title>
             <div className='flex flex-col md:flex-row gap-10'>
-                <img className='w-160 h-100 rounded-2xl shadow-xl' src={SingleProperty.propertyImage} alt="" />
+                <img className='w-160 h-100 rounded-2xl shadow-xl' src={singleProperty.propertyImage} alt="" />
                 <div>
-                    <h4 className='text-3xl font-bold'>{SingleProperty.propertyName}</h4>
+                    <h4 className='text-3xl font-bold'>{singleProperty.propertyName}</h4>
                     <div className='mt-1 flex gap-3'>
-                        <div className="badge badge-outline badge-info"><FaHashtag /> {SingleProperty.category}</div>
-                        <div className="badge badge-outline badge-primary"><IoLocationSharp /> {SingleProperty.location}</div>
+                        <div className="badge badge-outline badge-info"><FaHashtag /> {singleProperty.category}</div>
+                        <div className="badge badge-outline badge-primary"><IoLocationSharp /> {singleProperty.location}</div>
                     </div>
                     <div className='mt-10'>
                         <p className='text-xl font-bold'>Details</p>
-                        <p className='mt-2 text-gray-600'>{SingleProperty.longDescription}</p>
+                        <p className='mt-2 text-gray-600'>{singleProperty.longDescription}</p>
                     </div>
                     <div className='mt-5'>
-                        <div className="badge badge-soft badge-success text-xl font-bold"><IoPricetags /> Price: {SingleProperty.price}</div>
+                        <div className="badge badge-soft badge-success text-xl font-bold"><IoPricetags /> Price: {singleProperty.price}</div>
                     </div>
                     <div className='mt-5'>
                         <p className='text-xl font-bold'>Contact Details</p>
                         <div className='mt-2 flex items-center gap-5'>
-                            <img className='w-15 h-15 object-cover rounded-full' src={SingleProperty.postedBy.profilePhoto} alt="" />
+                            <img className='w-15 h-15 object-cover rounded-full' src={singleProperty.postedBy.profilePhoto} alt="" />
                             <div className='space-y-1'>
-                                <p className='text-gray-600 font-semibold'>{SingleProperty.postedBy.name}</p>
-                                <p className='text-gray-600'>{SingleProperty.postedBy.email}</p>
+                                <p className='text-gray-600 font-semibold'>{singleProperty.postedBy.name}</p>
+                                <p className='text-gray-600'>{singleProperty.postedBy.email}</p>
                             </div>
                         </div>
                     </div>
