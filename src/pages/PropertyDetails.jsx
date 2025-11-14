@@ -92,7 +92,7 @@ const PropertyDetails = () => {
             </div>
             <div className='text-center mt-20'>
                 <h3 className='text-4xl font-bold'>Rate the <span className='text-transparent bg-clip-text bg-linear-to-r from-[#2B32B2] to-[#1488CC]'>Property</span></h3>
-                <form onSubmit={handlePostReview} className='mt-10 mx-auto w-95 bg-base-100 p-6 rounded-2xl shadow-xl'>
+                <form onSubmit={handlePostReview} className='mt-10 mx-auto w-auto bg-base-100 p-6 rounded-2xl shadow-xl'>
                     <p>Rate this property</p>
                     <div className='mt-1 flex justify-center'>
                         <Rating
