@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Banner from '../components/Banner/Banner';
 import { FaClipboardList } from "react-icons/fa";
 import { AiFillClockCircle } from "react-icons/ai";
@@ -6,6 +6,7 @@ import { FaUserTie } from "react-icons/fa";
 import Agents from '../components/Agents/Agents';
 import { useLoaderData } from 'react-router';
 import Property from '../components/Property/Property';
+import Loading from '../components/Loading/Loading';
 
 const agentsPromise = fetch("https://home-nest-server-green.vercel.app/agents").then(res => res.json());
 
@@ -43,7 +44,9 @@ const Home = () => {
                 <h3 className='text-center text-2xl md:text-4xl font-bold'>Meet Our <span className='text-transparent bg-clip-text bg-linear-to-r from-[#2B32B2] to-[#1488CC]'>Top Agents</span></h3>
                 <p className='mt-2 md:mt-5 md:text-xl text-center'>Our experienced real estate professionals are here to guide you every step of the way — <br />helping you buy, sell, or rent with confidence</p>
                 <div>
-                    <Agents agentsPromise={agentsPromise}></Agents>
+                    <Suspense fallback={<Loading></Loading>}>
+                        <Agents agentsPromise={agentsPromise}></Agents>
+                    </Suspense>
                 </div>
             </div>
             <div className='px-5 md:px-20 mt-20 mb-15'>

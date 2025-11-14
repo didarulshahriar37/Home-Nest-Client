@@ -1,11 +1,11 @@
-import React, { use } from 'react';
+import React, { useContext } from 'react';
 import { IoHome } from "react-icons/io5";
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
-    const { user, signOutUser } = use(AuthContext);
+    const { user, signOutUser } = useContext(AuthContext);
 
     const handleSignOut = (e) => {
         e.preventDefault();

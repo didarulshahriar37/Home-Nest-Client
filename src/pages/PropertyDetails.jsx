@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import { FaHashtag } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
@@ -9,7 +9,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const PropertyDetails = () => {
-    const { user } = use(AuthContext);
+    const { user } = useContext(AuthContext);
     const data = useLoaderData();
     const [rating, setRating] = useState(0);
     const [review, setReview] = useState("");

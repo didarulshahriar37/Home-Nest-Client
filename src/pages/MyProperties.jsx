@@ -1,10 +1,10 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import Loading from '../components/Loading/Loading';
 import MyPropertyCard from './MyPropertyCard';
 
 const MyProperties = () => {
-    const { user } = use(AuthContext);
+    const { user } = useContext(AuthContext);
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
 

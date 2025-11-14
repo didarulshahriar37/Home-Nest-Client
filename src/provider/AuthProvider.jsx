@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
         googleSignIn
 
     }
-    return <AuthContext value={authData} > {children} </AuthContext>;
+    return <AuthContext.Provider value={authData} > {children} </AuthContext.Provider>;
 }
 
 export default AuthProvider;

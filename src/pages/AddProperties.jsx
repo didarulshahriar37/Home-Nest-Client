@@ -1,10 +1,10 @@
-import React, { use } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 
 const AddProperties = () => {
-    const { user } = use(AuthContext);
+    const { user } = useContext(AuthContext);
     const properties = useLoaderData();
 
     const categories = [...new Set(properties.map(property => property.category))];

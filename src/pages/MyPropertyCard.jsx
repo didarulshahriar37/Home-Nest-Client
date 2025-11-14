@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { useContext } from 'react';
 import { MdOutlineLocationOn } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router';
 import { SlCalender } from "react-icons/sl";
@@ -6,7 +6,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const MyPropertyCard = ({ property, setProperties }) => {
-    const { user } = use(AuthContext);
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleUpdateInfo = (e, id) => {
