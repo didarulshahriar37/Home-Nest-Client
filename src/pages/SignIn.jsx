@@ -40,6 +40,22 @@ const SignIn = () => {
                 const token = credential.accessToken;
                 const user = result.user;
                 setUser(user);
+                const newUser = {
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL
+                }
+                fetch("https://home-nest-server-green.vercel.app/users", {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                    })
                 Swal.fire({
                     title: "Signed In",
                     icon: "success",
