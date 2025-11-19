@@ -67,3 +67,12 @@ HomeNest - A Real Estate Listing Portal
 [![@eslint/js](https://img.shields.io/badge/@eslint_js-9.36.0-red?style=flat-square)](https://www.npmjs.com/package/@eslint/js)    
 [![@types/react](https://img.shields.io/badge/@types_react-19.1.16-lightgrey?style=flat-square)](https://www.npmjs.com/package/@types/react)   
 [![Globals](https://img.shields.io/badge/Globals-16.4.0-lightgrey?style=flat-square)](https://www.npmjs.com/package/globals)
+
+---
+
+## Installation
+```bash
+> git clone https://github.com/didarulshahriar37/Home-Nest-Client.git
+> cd Home-Nest-Client
+> npm install
+> npm run dev
