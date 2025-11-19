@@ -63,11 +63,7 @@ HomeNest - A Real Estate Listing Portal
 
 ### Development Tools
 [![Vite](https://img.shields.io/badge/Vite-7.1.7-purple?style=flat-square)](https://vitejs.dev/)  
-[![@vitejs/plugin-react](https://img.shields.io/badge/@vitejs_plugin-react-5.0.4-purple?style=flat-square)](https://www.npmjs.com/package/@vitejs/plugin-react)  
 [![ESLint](https://img.shields.io/badge/ESLint-9.36.0-red?style=flat-square)](https://eslint.org/)  
-[![@eslint/js](https://img.shields.io/badge/@eslint_js-9.36.0-red?style=flat-square)](https://www.npmjs.com/package/@eslint/js)  
-[![eslint-plugin-react-hooks](https://img.shields.io/badge/react-hooks-5.2.0-lightblue?style=flat-square)](https://www.npmjs.com/package/eslint-plugin-react-hooks)  
-[![eslint-plugin-react-refresh](https://img.shields.io/badge/react-refresh-0.4.22-lightblue?style=flat-square)](https://www.npmjs.com/package/eslint-plugin-react-refresh)  
-[![@types/react](https://img.shields.io/badge/@types_react-19.1.16-lightgrey?style=flat-square)](https://www.npmjs.com/package/@types/react)  
-[![@types/react-dom](https://img.shields.io/badge/@types_react-dom-19.1.9-lightgrey?style=flat-square)](https://www.npmjs.com/package/@types/react-dom)  
+[![@eslint/js](https://img.shields.io/badge/@eslint_js-9.36.0-red?style=flat-square)](https://www.npmjs.com/package/@eslint/js)    
+[![@types/react](https://img.shields.io/badge/@types_react-19.1.16-lightgrey?style=flat-square)](https://www.npmjs.com/package/@types/react)   
 [![Globals](https://img.shields.io/badge/Globals-16.4.0-lightgrey?style=flat-square)](https://www.npmjs.com/package/globals)
