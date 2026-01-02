@@ -12,6 +12,7 @@ import MyProperties from "../pages/MyProperties";
 import MyRatings from "../pages/MyRatings";
 import PrivateRoute from "../provider/PrivateRoute";
 import PropertyDetails from "../pages/PropertyDetails";
+import ContactUs from "../pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
           loader: () => fetch("https://home-nest-server-green.vercel.app/all-properties").then(res=>res.json()),
           hydrateFallbackElement: <Loading></Loading>,
           element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>
+        },
+        {
+          path: "/contact-us",
+          Component: ContactUs
         }
     ]
   },

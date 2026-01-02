@@ -18,7 +18,7 @@ const Home = () => {
             <div>
                 <Banner></Banner>
             </div>
-            <div className='px-5 md:px-20 mt-20'>
+            <div data-aos="fade-up" className='px-5 md:px-20 mt-20'>
                 <div className='bg-base-100 rounded-2xl shadow-xl pb-15'>
                     <div className='text-center'>
                         <h2 className='pt-10 font-bold text-2xl md:text-4xl'>Why Choose Us?</h2>
@@ -40,7 +40,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className='px-5 md:px-20 mt-20'>
+            <div data-aos="fade-up" className='px-5 md:px-20 mt-20'>
                 <h3 className='text-center text-2xl md:text-4xl font-bold'>Meet Our <span className='text-transparent bg-clip-text bg-linear-to-r from-[#2B32B2] to-[#1488CC]'>Top Agents</span></h3>
                 <p className='mt-2 md:mt-5 md:text-xl text-center'>Our experienced real estate professionals are here to guide you every step of the way — <br />helping you buy, sell, or rent with confidence</p>
                 <div>
@@ -49,7 +49,7 @@ const Home = () => {
                     </Suspense>
                 </div>
             </div>
-            <div className='px-5 md:px-20 mt-20 mb-15'>
+            <div data-aos="fade-up" className='px-5 md:px-20 mt-20 mb-15'>
                 <h3 className='text-center text-2xl md:text-4xl font-bold'>Featured <span className='text-transparent bg-clip-text bg-linear-to-r from-[#2B32B2] to-[#1488CC]'>Properties</span></h3>
                 <div className='grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 gap-5 md:gap-10'>
                     {

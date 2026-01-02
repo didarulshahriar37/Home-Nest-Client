@@ -3,9 +3,13 @@ import { IoHome } from "react-icons/io5";
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { FiSun } from 'react-icons/fi';
+import { FaMoon } from 'react-icons/fa';
+import useTheme from '../../hooks/useTheme';
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext);
+    const { theme, toggleTheme } = useTheme();
 
     const handleSignOut = (e) => {
         e.preventDefault();
@@ -38,6 +42,7 @@ const Navbar = () => {
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/all-properties">All Properties</NavLink></li>
                     <li><NavLink to="/add-properties">Add Properties</NavLink></li>
+                    <li><NavLink to="/contact-us">Contact Us</NavLink></li>
                 </>
         }
     </>
@@ -69,6 +74,13 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
+                <button
+                    onClick={toggleTheme}
+                    className="btn btn-circle btn-ghost"
+                    aria-label="Toggle Theme"
+                >
+                    {theme === "light" ? <FaMoon /> : <FiSun />}
+                </button>
                 {
                     user ? <div className='flex items-center gap-2'>
                         <div className="dropdown dropdown-center">

@@ -34,7 +34,7 @@ const Banner = () => {
                         style={{
                             backgroundImage: `url(${apartment})`
                         }}>
-                        <div className='absolute inset-0 bg-linear-to-b  md:bg-linear-to-r from-black/70 to-black/1'>
+                        <div className='absolute inset-0 bg-black/55'>
                             <div className='space-y-4 md:ml-15 mt-3 md:mt-40 relative z-10 text-center md:text-start max-w-lg'>
                                 <h3 className='flex justify-center md:justify-normal items-center font-bold gap-2 text-xl md:text-4xl'><MdApartment></MdApartment> Find Your Dream House</h3>
                                 <p className='text-sm md:text-lg'>Discover modern apartments, cozy family homes, and premium properties - all in one trusted platform.</p>
@@ -48,7 +48,7 @@ const Banner = () => {
                         style={{
                             backgroundImage: `url(${family})`
                         }}>
-                        <div className='absolute inset-0 bg-linear-to-b  md:bg-linear-to-r from-black/70 to-black/1'>
+                        <div className='absolute inset-0 bg-black/55'>
                             <div className='space-y-4 md:ml-15 mt-3 md:mt-40 relative z-10 text-center md:text-start max-w-lg'>
                                 <h3 className='flex justify-center md:justify-normal items-center font-bold gap-2 text-xl md:text-4xl'><IoIosPeople></IoIosPeople> Trusted By Thousands</h3>
                                 <p className='text-sm md:text-lg'>We connect you with verified listings, transparent deals, and trusted sellers — so you can move in with confidence.</p>
@@ -61,7 +61,7 @@ const Banner = () => {
                         style={{
                             backgroundImage: `url(${city})`
                         }}>
-                        <div className='absolute inset-0 bg-linear-to-b  md:bg-linear-to-r from-black/70 to-black/1'>
+                        <div className='absolute inset-0 bg-black/55'>
                             <div className='space-y-4 px-2 md:ml-15 mt-3 md:mt-40 relative z-10 text-center md:text-start max-w-lg'>
                                 <h3 className='flex justify-center md:justify-normal items-center font-bold gap-2 text-xl md:text-4xl'>Explore Homes Near You — Anytime, Anywhere</h3>
                                 <p className='text-sm md:text-lg'>Browse properties by location, budget, or type — our powerful filters make home-hunting effortless.</p>
