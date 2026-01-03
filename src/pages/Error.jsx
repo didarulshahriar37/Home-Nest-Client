@@ -12,9 +12,9 @@ const Error = () => {
                     animationData={animationData}
                     loop
                     autoplay
-                    className="w-90 md:w-105"
+                    className="w-90 md:w-130"
                 />
-            <div className='mt-3'>
+            <div className=''>
                 <Link to="/" className='btn border-none shadow-none bg-linear-to-r from-[#56CCF2] to-[#2F80ED] hover:from-[#00B4DB] hover:to-[#0083B0] text-white'>Home</Link>
             </div>
         </div>
